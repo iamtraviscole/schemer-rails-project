@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903005104) do
+ActiveRecord::Schema.define(version: 20170904224813) do
 
   create_table "color_scheme_colors", force: :cascade do |t|
     t.integer "color_scheme_id"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170903005104) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "uid"
   end
 
 end
