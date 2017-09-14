@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'color_schemes#index'
+  root to: 'users#show'
+
+  resources :users, only: :show do
+    resources :color_schemes
+    resources :favorites, only: [:index, :show, :update]
+  end
+
+  resources :color_schemes, only: [:index, :show]
+  resources :colors, only: [:index, :new, :create]
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
