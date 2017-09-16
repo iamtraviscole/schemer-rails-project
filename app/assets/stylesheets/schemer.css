@@ -1,0 +1,10 @@
+.width_20p {
+  width: 20%;
+  height: 200px;
+  float: left;
+  text-align: center;
+}
+
+input[type="text"].tall_input {
+  height: 200px;
+}

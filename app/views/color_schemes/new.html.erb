@@ -1,1 +1,41 @@
-color scheme new form
+<div class="container">
+
+  <h1>New Color Scheme</h1>
+
+  <%= form_for([@user, @color_scheme]) do |csf| %>
+    <p>
+      <%= csf.label :name %>
+      <%= csf.text_field :name, class: "u-full-width", placeholder: "Scheme Name"%>
+    </p>
+
+    <%= csf.label :colors, "Select Colors" %>
+
+    <div class="row">
+      <div class="twelve columns">
+        <%= csf.fields_for :colors do |cf| %>
+          <%= cf.text_field :hex_code, class: "width_20p tall_input"%>
+        <% end %>
+      </div>
+    </div>
+
+      <p>
+        <%= csf.submit "Create"%>
+      </p>
+    </div>
+  <% end %>
+
+</div>
+
+<% content_for :script do %>
+  <script>
+    var target = document.querySelectorAll('input.width_20p');
+
+    // set hooks for each target element
+    for (var i = 0, len = target.length; i < len; ++i) {
+        (new CP(target[i])).on("change", function(color) {
+            this.target.value = '#' + color;
+            this.target.style.backgroundColor = '#' + color;
+        });
+    }
+  </script>
+<% end %>
