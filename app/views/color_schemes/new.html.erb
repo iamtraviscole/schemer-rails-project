@@ -13,7 +13,7 @@
     <div class="row">
       <div class="twelve columns">
         <%= csf.fields_for :colors do |cf| %>
-          <%= cf.text_field :hex_code, class: "width_20p tall_input"%>
+          <%= cf.text_field :hex_code, class: "width-20p tall-input"%>
         <% end %>
       </div>
     </div>
@@ -28,7 +28,7 @@
 
 <% content_for :script do %>
   <script>
-    var target = document.querySelectorAll('input.width_20p');
+    var target = document.querySelectorAll('input.width-20p');
 
     // set hooks for each target element
     for (var i = 0, len = target.length; i < len; ++i) {

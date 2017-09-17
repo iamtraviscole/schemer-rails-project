@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
   def new
+    if current_user
+      redirect_to root_path
+      # please log out first
+    end
   end
 
   def create

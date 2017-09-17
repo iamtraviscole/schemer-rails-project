@@ -1,8 +1,14 @@
-<h1>Signup!</h1>
+<h1 class="text-center">Signup</h1>
 
 <%= form_for :user do |f| %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Signup" %>
+<div class="logincontainer">
+  Email: <br>
+  <%= f.text_field :email %> <br>
+  Password: <br>
+  <%= f.password_field :password %> <br>
+  Password Confirmation: <br>
+  <%= f.password_field :password_confirmation %> <br>
+  <%= f.submit "Sign Up", class: "button-primary" %>
+</div>
+<p class="text-center sm"><%= link_to "Already have an account? Log in", login_path %></h1>
 <% end %>

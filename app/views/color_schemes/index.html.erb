@@ -1,1 +1,23 @@
-color schemes index
+<div class="container">
+
+  <h1>Color Schemes</h1>
+    <% @color_schemes.each do |cs| %>
+      <div class="row">
+        <div class="twelve columns">
+          <h3 class="u-pull-left"><%= cs.name %></h3>
+          <p class="u-pull-right"><%= link_to "edit", edit_user_color_scheme_path(@user, cs) if current_user.id == @user.id %></p>
+          <p class="u-pull-right"><%= link_to "add to favorites", edit_user_color_scheme_path(@user, cs) %></p>
+        </div>
+      </div>
+      <div class="colors-container">
+        <div class="row">
+          <div class="twelve columns">
+            <% cs.colors.each do |c| %>
+              <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+</div>

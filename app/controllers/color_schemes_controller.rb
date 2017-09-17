@@ -3,7 +3,7 @@ class ColorSchemesController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @color_schemes = @user.color_schemes
+      @color_schemes = @user.color_schemes.all
     else
       @color_schemes = ColorScheme.all
     end
@@ -27,6 +27,7 @@ class ColorSchemesController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
