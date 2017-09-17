@@ -1,1 +1,39 @@
-dashboard
+<div class="container">
+
+  <div class="row">
+
+    <div class="six columns">
+      <h2>Your Color Schemes</h2>
+        <% current_user.color_schemes.each do |cs| %>
+          <div class="colors-container">
+            <h4 class="u-pull-left"><%= cs.name %></h4>
+            <div class="row">
+              <div class="twelve columns">
+                <% cs.colors.each do |c| %>
+                  <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="six columns">
+      <h2>Favorite Color Schemes</h2>
+        <% current_user.favorite_color_schemes.each do |fcs| %>
+          <div class="colors-container">
+            <h4 class="u-pull-left"><%= fcs.name %></h4>
+            <div class="row">
+              <div class="twelve columns">
+                <% fcs.colors.each do |c| %>
+                  <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+
+</div>

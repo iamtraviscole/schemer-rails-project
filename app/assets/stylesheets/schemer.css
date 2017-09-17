@@ -1,3 +1,28 @@
+* {
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+input {
+  color: #555;
+}
+
+body {
+  background: #555;
+  background: linear-gradient(#777, #ccc);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.nav {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px 0 10px;
+}
+
 .width-20p {
   width: 20%;
   height: 200px;
@@ -7,13 +32,14 @@
 
 input[type="text"].tall-input {
   height: 200px;
+  color: #fff;
 }
 
 .colors-container {
-  border: 1px solid #e1e1e1;
   border-radius: 4px;
   margin-bottom: 20px;
   padding: 10px;
+  border: 1px solid #555;
 }
 
 .colors-index-20p {
@@ -23,18 +49,24 @@ input[type="text"].tall-input {
   text-align: center;
 }
 
-.twelve.columns h3 {
+.colors-container h3 {
   margin-bottom: 2px;
+  margin-top: -4px;
 }
 
-.twelve.columns p {
-  margin-top: 20px;
+.colors-container h4 {
+  margin-bottom: 2px;
+  margin-top: -4px;
+}
+
+.colors-container p {
+  margin: 8px 1px 0 0;
   color: #999;
   padding-left: 10px;
 }
 
 .logincontainer{
-  border: 1px solid #e1e1e1;
+  border: 1px solid #555;
   text-align: center;
   width: 250px;
   margin: 0 auto;
@@ -60,5 +92,14 @@ input[type="text"].tall-input {
 
 .sm a {
   font-size: 1.1rem;
-  color: #999;
+  color: #eee;
+}
+
+.icon {
+  padding-right: 2px;
+}
+
+.star-icon {
+  color: #fedd00;
+  padding-right: 2px;
 }

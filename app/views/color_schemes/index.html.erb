@@ -2,14 +2,10 @@
 
   <h1>Color Schemes</h1>
     <% @color_schemes.each do |cs| %>
-      <div class="row">
-        <div class="twelve columns">
-          <h3 class="u-pull-left"><%= cs.name %></h3>
-          <p class="u-pull-right"><%= link_to "edit", edit_user_color_scheme_path(@user, cs) if current_user.id == @user.id %></p>
-          <p class="u-pull-right"><%= link_to "add to favorites", edit_user_color_scheme_path(@user, cs) %></p>
-        </div>
-      </div>
       <div class="colors-container">
+        <h3 class="u-pull-left"><%= cs.name %></h3>
+        <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><%= link_to "edit", edit_user_color_scheme_path(@user, cs) if current_user.id == @user.id %></p>
+        <p class="u-pull-right"><span class="fa fa-star-o star-icon"></span><%= link_to "favorite", edit_user_color_scheme_path(@user, cs) %></p>
         <div class="row">
           <div class="twelve columns">
             <% cs.colors.each do |c| %>

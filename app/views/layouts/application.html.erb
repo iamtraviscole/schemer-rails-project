@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
   </head>
 
   <body>
@@ -13,8 +14,10 @@
     <div id="header">
 
       <% if current_user %>
-        <%= current_user.email if current_user %>
-        <%= link_to "Log Out", logout_path(@current_user), method: :delete %>
+        <div class="nav">
+          <%= current_user.email if current_user %>
+          <%= link_to "Log Out", logout_path(@current_user), method: :delete %>
+        </div>
       <% end %>
 
       <% flash.each do |key, value| %>
