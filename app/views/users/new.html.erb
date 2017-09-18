@@ -2,12 +2,13 @@
 
 <%= form_for :user do |f| %>
 <div class="logincontainer">
-  Email: <br>
+  Email <br>
   <%= f.text_field :email %> <br>
-  Password: <br>
+  Password <br>
   <%= f.password_field :password %> <br>
-  Password Confirmation: <br>
+  Confirm Password <br>
   <%= f.password_field :password_confirmation %> <br>
+  <br>
   <%= f.submit "Sign Up", class: "button-primary" %>
 </div>
 <p class="text-center sm"><%= link_to "Already have an account? Log in", login_path %></h1>

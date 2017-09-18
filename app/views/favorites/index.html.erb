@@ -1,1 +1,19 @@
-favorites index
+<div class="container">
+
+  <h1>Favorites</h1>
+  <% current_user.favorites.each do |favs| %>
+    <div class="colors-container">
+      <h3 class="u-pull-left"><%= favs.name %></h3>
+
+      <p class="u-pull-right"><span class="fa fa-star-o star-icon"></span><%= link_to "favorite", user_favorite_path(current_user, favs, type: "favorite"), method: :put %></p>
+      <div class="row">
+        <div class="twelve columns">
+          <% favs.colors.each do |c| %>
+            <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>

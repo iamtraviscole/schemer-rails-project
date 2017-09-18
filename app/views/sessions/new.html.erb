@@ -2,10 +2,11 @@
 
 <%= form_tag '/login' do %>
   <div class="logincontainer">
-    <p>Email:</p> <br>
+    <p>Email</p> <br>
     <%= text_field_tag :email %> <br>
-    <p>Password:</p> <br>
+    <p>Password</p> <br>
     <%= password_field_tag :password %> <br>
+    <br>
     <%= submit_tag "Log In", class: "button-primary" %> <br>
     <br>
     <%= link_to"Or Log In with Github", "/auth/github" %>

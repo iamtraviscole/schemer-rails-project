@@ -17,10 +17,29 @@ body {
   background-attachment: fixed;
 }
 
-.nav {
+nav {
   height: 50px;
   line-height: 50px;
-  padding: 0 10px 0 10px;
+  margin-bottom: 40px;
+  background: #6c6c6c;
+}
+
+nav a {
+  padding: 0 15px 0 5px;
+  border-right: 1px solid #555;
+}
+
+nav span {
+  padding-left: 10px;
+}
+
+nav span.u-pull-left :last-child {
+  border-right: none;
+}
+
+nav span.u-pull-right :last-child {
+  border-right: none;
+  margin-right: 15px;
 }
 
 .width-20p {
@@ -36,10 +55,14 @@ input[type="text"].tall-input {
 }
 
 .colors-container {
-  border-radius: 4px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #555;
+  margin-bottom: 50px;
+}
+
+.text-index-100p {
+  width: 100%;
+  height: 100px;
+  float: left;
+  text-align: center;
 }
 
 .colors-index-20p {
@@ -78,6 +101,10 @@ input[type="text"].tall-input {
   margin-bottom: -20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .text-right {
   text-align: right;
 }
@@ -91,7 +118,7 @@ input[type="text"].tall-input {
 }
 
 .sm a {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #eee;
 }
 

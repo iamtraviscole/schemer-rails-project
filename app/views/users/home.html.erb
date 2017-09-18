@@ -20,12 +20,12 @@
 
     <div class="six columns">
       <h2>Favorite Color Schemes</h2>
-        <% current_user.favorite_color_schemes.each do |fcs| %>
+        <% current_user.favorites.each do |favs| %>
           <div class="colors-container">
-            <h4 class="u-pull-left"><%= fcs.name %></h4>
+            <h4 class="u-pull-left"><%= favs.name %></h4>
             <div class="row">
               <div class="twelve columns">
-                <% fcs.colors.each do |c| %>
+                <% favs.colors.each do |c| %>
                   <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
                 <% end %>
               </div>
