@@ -1,0 +1,13 @@
+<% content_for :script do %>
+  <script>
+    var target = document.querySelectorAll('input.width-20p');
+
+    // set hooks for each target element
+    for (var i = 0, len = target.length; i < len; ++i) {
+        (new CP(target[i])).on("change", function(color) {
+            this.target.value = '#' + color;
+            this.target.style.backgroundColor = '#' + color;
+        });
+    }
+  </script>
+<% end %>

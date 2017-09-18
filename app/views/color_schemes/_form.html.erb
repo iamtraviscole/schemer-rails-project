@@ -1,0 +1,21 @@
+<%= form_for([@user, @color_scheme]) do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "u-full-width", placeholder: "Scheme Name"%>
+  </p>
+
+  <%= f.label :colors, "Select Colors" %>
+
+  <div class="row">
+    <div class="twelve columns">
+      <%= f.fields_for :colors do |ff| %>
+        <%= ff.text_field :hex_code, class: "width-20p tall-input"%>
+      <% end %>
+    </div>
+  </div>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>

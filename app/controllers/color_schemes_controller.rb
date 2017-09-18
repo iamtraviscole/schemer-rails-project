@@ -27,10 +27,17 @@ class ColorSchemesController < ApplicationController
   end
 
   def edit
-    
+    @user = User.find(params[:user_id])
+    @color_scheme = ColorScheme.find(params[:id])
   end
 
   def update
+    @color_scheme = ColorScheme.find(params[:id])
+    if @color_scheme.update(color_scheme_params)
+      redirect_to user_color_schemes_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -39,7 +46,7 @@ class ColorSchemesController < ApplicationController
   private
 
   def color_scheme_params
-    params.require(:color_scheme).permit(:name, colors_attributes: [:hex_code])
+    params.require(:color_scheme).permit(:name, colors_attributes: [:id, :hex_code])
   end
 
 end
