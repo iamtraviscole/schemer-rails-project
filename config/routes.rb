@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :color_schemes, only: [:index, :show]
   resources :colors, only: [:index, :new, :create]
 
+  get '/popular' => 'color_schemes#popular'
+
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
 
