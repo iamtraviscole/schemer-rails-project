@@ -1,0 +1,10 @@
+  <div class="colors-container">
+    <h4 class="u-pull-left"><%= var.name %></h4>
+    <div class="row">
+      <div class="twelve columns">
+        <% var.colors.each do |c| %>
+          <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+        <% end %>
+      </div>
+    </div>
+  </div>

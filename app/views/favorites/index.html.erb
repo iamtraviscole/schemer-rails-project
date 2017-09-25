@@ -1,14 +1,16 @@
 <div class="container">
 
   <h1>Favorites</h1>
-  <% current_user.favorites.each do |favs| %>
+  <% current_user.favorites.each do |fav| %>
     <div class="colors-container">
-      <h3 class="u-pull-left"><%= favs.name %></h3>
+      <h3 class="u-pull-left"><%= fav.name %></h3>
 
-      <p class="u-pull-right"><span class="fa fa-star-o star-icon"></span><%= link_to "favorite", user_favorite_path(current_user, favs, type: "favorite"), method: :put %></p>
+      <p class="u-pull-right">
+        <%= render partial: "favorite", locals: {fav: fav} %>
+      </p>
       <div class="row">
         <div class="twelve columns">
-          <% favs.colors.each do |c| %>
+          <% fav.colors.each do |c| %>
             <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
           <% end %>
         </div>

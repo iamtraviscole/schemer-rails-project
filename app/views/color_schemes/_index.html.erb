@@ -4,7 +4,7 @@
     <% if @user %>
       <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><%= link_to "edit", edit_user_color_scheme_path(user, cs) if current_user.id == @user.id %></p>
     <% end %>
-    <p class="u-pull-right"><span class="fa fa-star-o star-icon"></span><%= link_to "favorite", user_favorite_path(current_user, cs, type: "favorite"), method: :put %></p>
+    <p class="u-pull-right"><%= render partial: "favorites/favorite", locals: {fav: cs} %></p>
     <div class="row">
       <div class="twelve columns">
         <% cs.colors.each do |c| %>

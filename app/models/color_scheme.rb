@@ -6,8 +6,9 @@ class ColorScheme < ApplicationRecord
   has_many :colors, through: :color_scheme_colors
 
   def colors_attributes=(colors_attributes)
+    self.colors.clear
     colors_attributes.each do |i, color_attributes|
-      self.colors.find_or_initialize_by(color_attributes)
+      self.colors << Color.find_or_initialize_by(hex_code: color_attributes[:hex_code])
     end
   end
 

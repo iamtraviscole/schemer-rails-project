@@ -24,7 +24,11 @@ class UsersController < ApplicationController
   end
 
   def home
-    @favorite_color_schemes = current_user.favorites
+    if current_user
+      @favorite_color_schemes = current_user.favorites
+    else
+      redirect_to login_path
+    end
   end
 
   private

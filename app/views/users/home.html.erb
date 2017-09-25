@@ -5,32 +5,14 @@
     <div class="six columns">
       <h2>Your Color Schemes</h2>
         <% current_user.color_schemes.each do |cs| %>
-          <div class="colors-container">
-            <h4 class="u-pull-left"><%= cs.name %></h4>
-            <div class="row">
-              <div class="twelve columns">
-                <% cs.colors.each do |c| %>
-                  <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <%= render partial: "home", locals: {var: cs, cs: cs} %>
         <% end %>
     </div>
 
     <div class="six columns">
       <h2>Favorite Color Schemes</h2>
-        <% current_user.favorites.each do |favs| %>
-          <div class="colors-container">
-            <h4 class="u-pull-left"><%= favs.name %></h4>
-            <div class="row">
-              <div class="twelve columns">
-                <% favs.colors.each do |c| %>
-                  <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+        <% current_user.favorites.each do |fav| %>
+          <%= render partial: "home", locals: {var: fav, cs: fav} %>
         <% end %>
     </div>
 
