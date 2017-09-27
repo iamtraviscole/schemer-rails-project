@@ -42,6 +42,12 @@ nav span.u-pull-right :last-child {
   margin-right: 15px;
 }
 
+.logo {
+  vertical-align: middle;
+  margin: -2px 0 0 -5px;
+  padding: 5px 15px 5px 5px;
+}
+
 .width-20p {
   width: 20%;
   height: 200px;
@@ -86,6 +92,12 @@ input[type="text"].tall-input {
   margin: 8px 1px 0 0;
   color: #999;
   padding-left: 10px;
+}
+
+.logintopcontainer {
+  text-align: center;
+  width: 250px;
+  margin: 0 auto;
 }
 
 .logincontainer{
