@@ -1,21 +1,26 @@
 class ColorSchemesController < ApplicationController
   before_action :authorize
   before_action :find_color_scheme, only: [:edit, :update, :destroy]
+  before_action :find_user_id, only: [:new, :edit]
 
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @color_schemes = @user.color_schemes.all
+      @color_schemes = @user.color_schemes
     else
       @color_schemes = ColorScheme.all
     end
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @color_scheme = ColorScheme.new
-    5.times do
-      @color_scheme.colors.new
+    if @user.id == current_user.id
+      @color_scheme = ColorScheme.new
+      5.times do
+        @color_scheme.colors.new
+      end
+    else
+      flash[:error] = "You cannot create color schemes for others"
+      redirect_to new_user_color_scheme_path(current_user)
     end
   end
 
@@ -25,13 +30,16 @@ class ColorSchemesController < ApplicationController
       flash[:success] = "New color scheme created!"
       redirect_to user_color_schemes_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = @color_scheme.errors.full_messages.to_sentence
       redirect_to new_user_color_scheme_path
     end
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    if current_user != @user
+      flash[:error] = "Not your color scheme"
+      redirect_to color_schemes_path
+    end
   end
 
   def update
@@ -63,10 +71,6 @@ class ColorSchemesController < ApplicationController
 
   def color_scheme_params
     params.require(:color_scheme).permit(:name, colors_attributes: [:id, :hex_code])
-  end
-
-  def find_color_scheme
-    @color_scheme = ColorScheme.find(params[:id])
   end
 
 end

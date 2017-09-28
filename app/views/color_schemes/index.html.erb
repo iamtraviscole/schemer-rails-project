@@ -1,11 +1,14 @@
 <div class="container">
 
-  <% if @user %>
+  <% if @user && @user == current_user %>
     <h1>Your Color Schemes</h1>
-      <%= render partial: "index", locals: {user: @user, color_schemes: @color_schemes} %>
-    <% else %>
+    <%= render partial: "index", locals: {user: @user, color_schemes: @color_schemes} %>
+  <% elsif @user && @user != current_user %>
+    <h1> User <%= @user.id %>'s Color Schemes</h1>
+    <%= render partial: "index", locals: {user: @user, color_schemes: @color_schemes} %>
+  <% else %>
     <h1>All Color Schemes</h1>
-      <%= render partial: "index", locals: {user: @user, color_schemes: @color_schemes} %>
-    <% end %>
+    <%= render partial: "index", locals: {user: @user, color_schemes: @color_schemes} %>
+  <% end %>
 
 </div>

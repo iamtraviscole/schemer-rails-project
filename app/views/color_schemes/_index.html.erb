@@ -1,17 +1,24 @@
-<% color_schemes.each do |cs| %>
-  <div class="colors-container">
-    <h3 class="u-pull-left"><%= cs.name %></h3>
-    <% if @user %>
-      <p class="u-pull-right"><span class="fa fa-trash-o" aria-hidden="true"></span> <%= link_to "Delete", user_color_scheme_path(user, cs), method: :delete if current_user.id == @user.id %></p>
-      <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><%= link_to "Edit", edit_user_color_scheme_path(user, cs) if current_user.id == @user.id %></p>
-    <% end %>
-    <p class="u-pull-right"><%= render partial: "favorites/favorite", locals: {fav: cs} %></p>
-    <div class="row">
-      <div class="twelve columns">
-        <% cs.colors.each do |c| %>
-          <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+<% if color_schemes.empty? %>
+  <p> No color schemes yet! </p>
+  <span class="fa fa-plus" aria-hidden="true"></span> <%= link_to "Create one!", new_user_color_scheme_path(current_user) %>
+<% else %>
+  <% color_schemes.each do |cs| %>
+    <div class="colors-container">
+      <h3 class="u-pull-left"><%= cs.name %></h3>
+      <% if @user %>
+        <% if @user == current_user %>
+          <p class="u-pull-right"><span class="fa fa-trash-o" aria-hidden="true"></span> <%= link_to "Delete", user_color_scheme_path(user, cs), method: :delete %></p>
+          <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><%= link_to "Edit", edit_user_color_scheme_path(user, cs) %></p>
         <% end %>
+      <% end %>
+      <p class="u-pull-right"><%= render partial: "favorites/favorite", locals: {color_scheme: cs} %></p>
+      <div class="row">
+        <div class="twelve columns">
+          <% cs.colors.each do |c| %>
+            <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>

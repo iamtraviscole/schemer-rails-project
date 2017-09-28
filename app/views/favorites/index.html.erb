@@ -1,21 +1,30 @@
 <div class="container">
 
-  <h1>Your Favorites</h1>
-  <% current_user.favorites.each do |fav| %>
-    <div class="colors-container">
-      <h3 class="u-pull-left"><%= fav.name %></h3>
+  <% if @user == current_user %>
+    <h1>Your Favorites</h1>
+  <% elsif @user != current_user %>
+    <h1>User <%= @user.id %>'s Favorites</h1>
+  <% end %>
 
-      <p class="u-pull-right">
-        <%= render partial: "favorite", locals: {fav: fav} %>
-      </p>
-      <div class="row">
-        <div class="twelve columns">
-          <% fav.colors.each do |c| %>
-            <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
-          <% end %>
+  <% if @favorites.empty? %>
+    <p> No favorites yet! </p>
+  <% else %>
+    <% @favorites.each do |fav| %>
+      <div class="colors-container">
+        <h3 class="u-pull-left"><%= fav.name %></h3>
+
+        <p class="u-pull-right">
+          <%= render partial: "favorite", locals: {color_scheme: fav} %>
+        </p>
+        <div class="row">
+          <div class="twelve columns">
+            <% fav.colors.each do |c| %>
+              <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 
 </div>

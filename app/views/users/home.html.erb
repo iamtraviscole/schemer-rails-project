@@ -4,15 +4,24 @@
 
     <div class="six columns">
       <h2>Your Color Schemes</h2>
-        <% current_user.color_schemes.each do |cs| %>
-          <%= render partial: "home", locals: {var: cs, cs: cs} %>
+        <% if current_user.color_schemes.empty? %>
+          <p>You haven't created any color schemes yet!</p>
+          <span class="fa fa-plus" aria-hidden="true"></span> <%= link_to "Create one!", new_user_color_scheme_path(current_user) %>
+        <% else %>
+          <% current_user.color_schemes.each do |cs| %>
+            <%= render partial: "home", locals: {var: cs, cs: cs} %>
+          <% end %>
         <% end %>
     </div>
 
     <div class="six columns">
       <h2>Your Favorites</h2>
-        <% current_user.favorites.each do |fav| %>
-          <%= render partial: "home", locals: {var: fav, cs: fav} %>
+        <% if current_user.favorites.empty? %>
+          <p>You haven't favorited any color schemes yet!</p>
+        <% else %>
+          <% current_user.favorites.each do |fav| %>
+            <%= render partial: "home", locals: {var: fav, cs: fav} %>
+          <% end %>
         <% end %>
     </div>
 

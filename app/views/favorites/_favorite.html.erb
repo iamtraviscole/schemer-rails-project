@@ -1,5 +1,5 @@
-<% if current_user.favorites.include?(fav) %>
-  <span class="fa fa-star star-icon"></span><%= link_to "Unfavorite", user_favorite_path(current_user, fav, type: "unfavorite"), method: :put %>
+<% if current_user.favorites && current_user.favorites.include?(color_scheme) %>
+  <span class="fa fa-star star-icon"></span><%= link_to "Unfavorite", user_favorite_path(current_user, color_scheme, type: "unfavorite"), method: :put %>
 <% else %>
-  <span class="fa fa-star-o star-icon"></span><%= link_to "Favorite", user_favorite_path(current_user, fav, type: "favorite"), method: :put %>
+  <span class="fa fa-star-o star-icon"></span><%= link_to "Favorite", user_favorite_path(current_user, color_scheme, type: "favorite"), method: :put %>
 <% end %>

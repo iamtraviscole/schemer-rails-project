@@ -11,4 +11,12 @@ class ApplicationController < ActionController::Base
     redirect_to login_path unless current_user
   end
 
+  def find_color_scheme
+    @color_scheme = ColorScheme.find(params[:id])
+  end
+
+  def find_user_id
+    @user = User.find(params[:user_id])
+  end
+
 end

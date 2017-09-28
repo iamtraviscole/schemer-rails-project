@@ -19,12 +19,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def home
-    @favorite_color_schemes = current_user.favorites
   end
 
   private

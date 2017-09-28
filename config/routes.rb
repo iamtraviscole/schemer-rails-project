@@ -3,12 +3,12 @@ Rails.application.routes.draw do
 
   root to: 'users#home'
 
-  resources :users, only: :show do
+  resources :users, only: [] do
     resources :color_schemes
-    resources :favorites, only: [:index, :show, :update]
+    resources :favorites, only: [:index, :update]
   end
 
-  resources :color_schemes, only: [:index, :show]
+  resources :color_schemes, only: [:index]
   resources :colors, only: [:create]
 
   get '/popular' => 'color_schemes#popular'

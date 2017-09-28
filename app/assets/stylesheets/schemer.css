@@ -149,7 +149,7 @@ a {
 }
 
 .alert-loginerror {
-  color: #ed0404;
+  color: red;
   font-size: 1.2rem;
   margin: 0 10px 15px 10px;
 }
@@ -167,6 +167,6 @@ a {
 }
 
 .alert-error {
-  color: #ed0404;
+  color: red;
   font-size: 1.4rem;
 }

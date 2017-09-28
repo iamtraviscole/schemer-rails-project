@@ -1,8 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :authorize
+  before_action :find_color_scheme, only: [:update]
+  before_action :find_user_id, only: [:index]
 
   def index
-    @favorites = current_user.favorites
+    @favorites = @user.favorites
   end
 
   def show
