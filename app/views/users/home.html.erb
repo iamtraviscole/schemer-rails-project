@@ -10,7 +10,7 @@
     </div>
 
     <div class="six columns">
-      <h2>Favorite Color Schemes</h2>
+      <h2>Your Favorites</h2>
         <% current_user.favorites.each do |fav| %>
           <%= render partial: "home", locals: {var: fav, cs: fav} %>
         <% end %>

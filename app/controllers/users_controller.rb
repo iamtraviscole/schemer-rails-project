@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: :dashboard
+  before_action :authorize, only: :home
 
   def new
     if current_user
       redirect_to root_path
-      # please log out first
+      flash[:error] = "Please log out first"
     end
   end
 
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:loginerror] = @user.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -24,11 +24,7 @@ class UsersController < ApplicationController
   end
 
   def home
-    if current_user
-      @favorite_color_schemes = current_user.favorites
-    else
-      redirect_to login_path
-    end
+    @favorite_color_schemes = current_user.favorites
   end
 
   private

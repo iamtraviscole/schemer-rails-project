@@ -5,6 +5,11 @@
 
 <%= form_for :user do |f| %>
 <div class="logincontainer">
+
+  <% if flash[:loginerror] %>
+    <div class="alert-loginerror"><%= flash[:loginerror] %></div>
+  <% end %>
+  
   Email <br>
   <%= f.text_field :email %> <br>
   Password <br>

@@ -45,7 +45,7 @@ nav span.u-pull-right :last-child {
 .logo {
   vertical-align: middle;
   margin: -2px 0 0 -5px;
-  padding: 5px 15px 5px 5px;
+  padding: 5px;
 }
 
 .width-20p {
@@ -130,7 +130,7 @@ a {
 }
 
 .sm a {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #eee;
 }
 
@@ -141,4 +141,32 @@ a {
 .star-icon {
   color: #fedd00;
   padding-right: 2px;
+}
+
+.field_with_errors :first-child {
+  border: 1px solid red;
+  margin: 0;
+}
+
+.alert-loginerror {
+  color: #ed0404;
+  font-size: 1.2rem;
+  margin: 0 10px 15px 10px;
+}
+
+.alertcontainer {
+  clear: both;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 10px;
+}
+
+.alert-success {
+  color: #3ace2f;
+  font-size: 1.4rem;
+}
+
+.alert-error {
+  color: #ed0404;
+  font-size: 1.4rem;
 }

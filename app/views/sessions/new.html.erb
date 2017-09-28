@@ -6,6 +6,11 @@
 
 <%= form_tag '/login' do %>
   <div class="logincontainer">
+    
+    <% if flash[:loginerror] %>
+      <div class="alert-loginerror"><%= flash[:loginerror] %></div>
+    <% end %>
+
     <p>Email</p> <br>
     <%= text_field_tag :email %> <br>
     <p>Password</p> <br>

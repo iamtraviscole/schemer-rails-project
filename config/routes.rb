@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :color_schemes, only: [:index, :show]
-  resources :colors, only: [:index, :new, :create]
+  resources :colors, only: [:create]
 
   get '/popular' => 'color_schemes#popular'
 

@@ -1,20 +1,20 @@
 <div class="container">
 
 <h1>Popular Color Schemes</h1>
-<% FavoriteColorScheme.most_popular.each do |color_scheme| %>
-  <div class="colors-container">
-    <h3 class="u-pull-left"><%= color_scheme.name %></h3>
-    <p class="u-pull-right">
-      <%= render partial: "favorites/favorite", locals: {fav: color_scheme} %>
-    </p>
-    <div class="row">
-      <div class="twelve columns">
-        <% color_scheme.colors.each do |c| %>
-          <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
-        <% end %>
+  <% @popular_color_schemes.each do |color_scheme| %>
+    <div class="colors-container">
+      <h3 class="u-pull-left"><%= color_scheme.name %></h3>
+      <p class="u-pull-right">
+        <%= render partial: "favorites/favorite", locals: {fav: color_scheme} %>
+      </p>
+      <div class="row">
+        <div class="twelve columns">
+          <% color_scheme.colors.each do |c| %>
+            <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 
 </div>

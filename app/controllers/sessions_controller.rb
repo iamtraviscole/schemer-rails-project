@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     if current_user
       redirect_to root_path
-      # please log out first
+      flash[:error] = "Please log out first"
     end
   end
 
@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      redirect_to login_path
+      flash[:loginerror] = "Invalid Email or Password"
+      render :new
     end
   end
 
@@ -28,6 +29,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    flash[:error] = "You have logged out"
     redirect_to login_path
   end
 
