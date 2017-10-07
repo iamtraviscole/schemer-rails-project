@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917224838) do
+ActiveRecord::Schema.define(version: 20171005223239) do
 
   create_table "color_scheme_colors", force: :cascade do |t|
     t.integer "color_scheme_id"
     t.integer "color_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color_note"
   end
 
   create_table "color_schemes", force: :cascade do |t|
