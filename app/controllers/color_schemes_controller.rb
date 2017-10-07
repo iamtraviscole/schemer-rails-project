@@ -70,7 +70,7 @@ class ColorSchemesController < ApplicationController
   private
 
   def color_scheme_params
-    params.require(:color_scheme).permit(:name, color_scheme_colors_attributes: [:color_note, color_attributes: [:id, :hex_code]])
+    params.require(:color_scheme).permit(:name, color_scheme_colors_attributes: [:id, :color_note, color_attributes: [:id, :hex_code]])
   end
 
 end

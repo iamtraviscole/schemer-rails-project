@@ -6,12 +6,4 @@ class ColorScheme < ApplicationRecord
   has_many :colors, through: :color_scheme_colors
   validates :name, presence: :true
   accepts_nested_attributes_for :color_scheme_colors
-
-  # def color_scheme_colors_attributes=(color_scheme_colors_attributes)
-  #   raise color_scheme_colors_attributes.inspect
-  #   color_scheme_colors_attributes.each do |i, csc_attributes|
-  #
-  #   end
-  # end
-
 end
