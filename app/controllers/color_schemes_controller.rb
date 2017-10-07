@@ -16,7 +16,7 @@ class ColorSchemesController < ApplicationController
     if @user.id == current_user.id
       @color_scheme = ColorScheme.new
       5.times do
-        @color_scheme.colors.new
+        @color_scheme.color_scheme_colors.new.build_color
       end
     else
       flash[:error] = "You cannot create color schemes for others"
@@ -70,7 +70,7 @@ class ColorSchemesController < ApplicationController
   private
 
   def color_scheme_params
-    params.require(:color_scheme).permit(:name, colors_attributes: [:id, :hex_code])
+    params.require(:color_scheme).permit(:name, color_scheme_colors_attributes: [:color_note, color_attributes: [:id, :hex_code]])
   end
 
 end

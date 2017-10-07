@@ -2,15 +2,16 @@ class ColorScheme < ApplicationRecord
   belongs_to :user
   has_many :favorite_color_schemes, dependent: :destroy
   has_many :favorited_by, through: :favorite_color_schemes, source: :user
-  has_many :color_scheme_colors
+  has_many :color_scheme_colors, dependent: :destroy
   has_many :colors, through: :color_scheme_colors
   validates :name, presence: :true
+  accepts_nested_attributes_for :color_scheme_colors
 
-  def colors_attributes=(colors_attributes)
-    self.colors.clear
-    colors_attributes.each do |i, color_attributes|
-      self.colors << Color.find_or_initialize_by(hex_code: color_attributes[:hex_code])
-    end
-  end
+  # def color_scheme_colors_attributes=(color_scheme_colors_attributes)
+  #   raise color_scheme_colors_attributes.inspect
+  #   color_scheme_colors_attributes.each do |i, csc_attributes|
+  #
+  #   end
+  # end
 
 end
