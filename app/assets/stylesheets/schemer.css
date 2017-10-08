@@ -48,11 +48,37 @@ nav span.u-pull-right :last-child {
   padding: 5px;
 }
 
-.width-20p {
+.cs-form-container {
+  position: relative;
+}
+
+.width-20p-colors {
   width: 20%;
-  height: 200px;
   float: left;
   text-align: center;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.width-20p-notes {
+  position: absolute;
+  width: 20%;
+  margin-top: 245px;
+  float: left;
+  height: 20px;
+}
+
+.color-note-label {
+  position: absolute;
+  margin-top: 215px;
+}
+
+form.new_color_scheme input[type=submit] {
+  margin-top: 100px;
+}
+
+form.edit_color_scheme input[type=submit] {
+  margin-top: 100px;
 }
 
 input[type="text"].tall-input {
