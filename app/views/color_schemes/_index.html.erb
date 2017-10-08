@@ -15,7 +15,19 @@
       <div class="row">
         <div class="twelve columns">
           <% cs.colors.each do |c| %>
-            <%= content_tag(:div, nil, class: "colors-index-20p", style:"background-color: #{c.hex_code};") %>
+            <% if !c.color_scheme_colors.first.color_note.blank? %>
+              <div class="colors-index-20p-container tooltip">
+                <%= content_tag(:div, nil, class: "colors-index-color", style:"background-color: #{c.hex_code};") %>
+                <span class="fa fa-square-o color-note-indicator" aria-hidden="true"></span>
+                <div class="colors-note-tooltiptext">
+                  <%= c.color_scheme_colors.first.color_note if c.color_scheme_colors.first.color_note %>
+                </div>
+              </div>
+            <% else %>
+              <div class="colors-index-20p-container tooltip">
+                <%= content_tag(:div, nil, class: "colors-index-color", style:"background-color: #{c.hex_code};") %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
