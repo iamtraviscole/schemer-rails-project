@@ -67,6 +67,10 @@ class ColorSchemesController < ApplicationController
     @popular_color_schemes = FavoriteColorScheme.most_popular
   end
 
+  def random
+    @random_scheme = ColorScheme.offset(rand(ColorScheme.count)).first
+  end
+
   private
 
   def color_scheme_params
