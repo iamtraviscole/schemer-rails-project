@@ -8,9 +8,16 @@
 
   <div class="row">
     <div class="twelve columns">
-      <%= f.fields_for :colors do |ff| %>
-        <%= ff.text_field :hex_code, class: "width-20p tall-input"%>
-      <% end %>
+      <div class="cs-form-container">
+        <%= f.label :color_scheme_colors, "Color Notes (optional)", class: "color-note-label" %>
+        <%= f.fields_for :color_scheme_colors do |csc| %>
+          <%= csc.text_field :color_note, class: "width-20p-notes" %>
+
+          <%= csc.fields_for :color do |c| %>
+            <%= c.text_field :hex_code, class: "width-20p-colors tall-input" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 

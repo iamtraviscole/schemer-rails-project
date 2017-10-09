@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="twelve columns">
-        <span class="fa fa-trash-o" aria-hidden="true"></span> <%= link_to "Delete Color Scheme", user_color_scheme_path(@color_scheme), method: :delete %>
+        <span class="fa fa-trash-o" aria-hidden="true"></span> <%= link_to "Delete Color Scheme", user_color_scheme_path(current_user, @color_scheme), method: :delete %>
     </div>
   </div>
 

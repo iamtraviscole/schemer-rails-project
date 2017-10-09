@@ -48,11 +48,37 @@ nav span.u-pull-right :last-child {
   padding: 5px;
 }
 
-.width-20p {
+.cs-form-container {
+  position: relative;
+}
+
+.width-20p-colors {
   width: 20%;
-  height: 200px;
   float: left;
   text-align: center;
+  cursor: pointer;
+  cursor: hand;
+}
+
+.width-20p-notes {
+  position: absolute;
+  width: 20%;
+  margin-top: 245px;
+  float: left;
+  height: 20px;
+}
+
+.color-note-label {
+  position: absolute;
+  margin-top: 215px;
+}
+
+form.new_color_scheme input[type=submit] {
+  margin-top: 100px;
+}
+
+form.edit_color_scheme input[type=submit] {
+  margin-top: 100px;
 }
 
 input[type="text"].tall-input {
@@ -71,11 +97,76 @@ input[type="text"].tall-input {
   text-align: center;
 }
 
+.colors-index-20p-container {
+  position: relative;
+  width: 20%;
+  height: 100px;
+  float: left;
+  text-align: center;
+}
+
 .colors-index-20p {
   width: 20%;
   height: 100px;
   float: left;
   text-align: center;
+}
+
+.colors-index-color {
+  width: 100%;
+  height: 100px;
+  float: left;
+  text-align: center;
+}
+
+.colors-index-note {
+  position: absolute;
+  bottom: 0px;
+  right: 4px;
+  font-size: 1.1rem;
+  color: #eee;
+}
+
+span.color-note-indicator {
+  position: absolute;
+  bottom:7px;
+  right: 7px;
+  font-size: 6pt;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+}
+
+/* Tooltip text */
+.tooltip .colors-note-tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #fff;
+  border: 1px solid #555;
+  color: #555;
+  text-align: center;
+  padding: 4px 0;
+  border-radius: 2px;
+  font-size: 1.1rem;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 7px;
+  right: 6px;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  /*opacity: 0;
+  transition: opacity 1s;*/
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .colors-note-tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 .colors-container h3 {
