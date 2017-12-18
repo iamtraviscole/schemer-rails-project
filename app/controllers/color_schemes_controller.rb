@@ -7,6 +7,7 @@ class ColorSchemesController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
       @color_schemes = @user.color_schemes
+      render json: @color_schemes, status: 201
     else
       @color_schemes = ColorScheme.all
     end
