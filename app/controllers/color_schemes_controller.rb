@@ -9,7 +9,7 @@ class ColorSchemesController < ApplicationController
       @color_schemes = @user.color_schemes
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: @color_schemes, status: 201}
+        format.json { render json: @color_schemes.to_json({include: [ :color_scheme_colors, :colors ]}) }
       end
     else
       @color_schemes = ColorScheme.all
