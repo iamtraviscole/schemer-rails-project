@@ -5,19 +5,25 @@ $(function() {
 function attachListeners(){
   $(document).on('click', '#yourschemeslink', function(event) {
     event.preventDefault()
-    loadColorSchemes()
+    loadColorSchemes(this)
   })
 }
 
-function loadColorSchemes() {
-  let userId = $('#current-user-data')[0].dataset.currentUserId
-  $.get(`/users/${userId}/color_schemes.json`, function(csData) {
-    let source = $('#color-scheme-template').html()
-    let template = Handlebars.compile(source)
-    let context = {
-      colorSchemes: csData
-    }
-    let html = template(context)
-    $('#content').html(html)
+function loadColorSchemes(clickData) {
+  $.ajax({
+    url: clickData.href,
+    dataType: 'json'
   })
+  .success(function(resp) {
+    $('#content').html(resp.index_partial)
+  })
+//   $.get(clickData.href).success(function(csData) {
+//     let source = $('#color-scheme-template').html()
+//     let template = Handlebars.compile(source)
+//     let data = {
+//       colorSchemes: csData
+//     }
+//     let html = template(data)
+//     $('#content').html(html)
+//   })
 }
