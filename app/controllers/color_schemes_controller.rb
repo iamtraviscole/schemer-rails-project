@@ -10,7 +10,8 @@ class ColorSchemesController < ApplicationController
       partial = render_to_string partial: 'color_schemes/index', locals: { user: @user, color_schemes: @color_schemes }
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: { index_partial: partial } }
+        format.json { render json: {index_partial: partial} }
+        # format.js { render json: @color_schemes.to_json(include: [:user, :colors, :color_scheme_colors]) }
       end
     else
       @color_schemes = ColorScheme.all

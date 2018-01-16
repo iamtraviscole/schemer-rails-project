@@ -12,18 +12,10 @@ function attachListeners(){
 function loadColorSchemes(clickData) {
   $.ajax({
     url: clickData.href,
-    dataType: 'json'
+    dataType: 'json',
+    success: function(resp) {
+      let partial = resp.index_partial
+        $('#content').html(`<div class='container'><h1>Your Color Schemes</h1>${partial}</div>`)
+      }
   })
-  .success(function(resp) {
-    $('#content').html(resp.index_partial)
-  })
-//   $.get(clickData.href).success(function(csData) {
-//     let source = $('#color-scheme-template').html()
-//     let template = Handlebars.compile(source)
-//     let data = {
-//       colorSchemes: csData
-//     }
-//     let html = template(data)
-//     $('#content').html(html)
-//   })
 }
