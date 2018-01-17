@@ -22,7 +22,7 @@
             <span class="fa fa-home" aria-hidden="true"></span><%= link_to "Home", root_path, class: "navspace"%>
             <span class="fa fa-th" aria-hidden="true"></span><%= link_to "All", color_schemes_path, class: "navspace" %>
             <span class="fa fa-fire" aria-hidden="true"></span><%= link_to "Popular", popular_path, class: "navspace" %>
-            <span class="fa fa-question" aria-hidden="true"></span><%= link_to "Random", random_path, class: "navspace" %>
+            <span class="fa fa-question" aria-hidden="true"></span><%= link_to "Random", random_path, class: "navspace", id: "randomlink" %>
             <span class="fa fa-star" aria-hidden="true"></span><%= link_to "Your Favorites", user_favorites_path(current_user), class: "navspace" %>
             <span class="fa fa-th-large" aria-hidden="true"></span><%= link_to "Your Schemes", user_color_schemes_path(current_user), class: "navspace", id: "yourschemeslink" %>
             <span class="fa fa-plus" aria-hidden="true"></span><%= link_to "Create Color Scheme", new_user_color_scheme_path(current_user), class: "navspace" %>
