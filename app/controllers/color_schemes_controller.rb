@@ -74,7 +74,15 @@ class ColorSchemesController < ApplicationController
   end
 
   def random
-    @random_scheme = ColorScheme.offset(rand(ColorScheme.count)).first
+    color_scheme_ids = ColorScheme.ids
+    random_id = color_scheme_ids.sample
+    @random_scheme =  ColorScheme.find(random_id)
+    partial = render_to_string partial: 'color_schemes/random', locals: { random_scheme: @random_scheme }
+    respond_to do |format|
+      format.html { render :random }
+      format.json { render json: {random_partial: partial} }
+    end
+    # @random_scheme = ColorScheme.offset(rand(ColorScheme.count)).first
   end
 
   private
