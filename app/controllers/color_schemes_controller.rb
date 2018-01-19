@@ -34,7 +34,10 @@ class ColorSchemesController < ApplicationController
     @color_scheme = current_user.color_schemes.new(color_scheme_params)
     if @color_scheme.save
       flash[:success] = "New color scheme created!"
-      redirect_to user_color_schemes_path
+      respond_to do |format|
+        format.html { redirect_to user_color_schemes_path }
+        format.json { redirect_to user_color_schemes_path, turbolinks: false }
+      end
     else
       flash[:error] = @color_scheme.errors.full_messages.to_sentence
       redirect_to new_user_color_scheme_path

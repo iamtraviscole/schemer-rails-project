@@ -22,6 +22,6 @@
   </div>
 
     <p>
-      <%= f.submit %>
+      <%= f.submit id: 'newcolorschemesubmit', data: { url: "/users/#{@user.id}/color_schemes" } %>
     </p>
 <% end %>
