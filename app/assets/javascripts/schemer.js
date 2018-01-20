@@ -1,3 +1,17 @@
+class Response {
+  constructor(response) {
+    this.response = response
+  }
+
+  yourColorSchemes() {
+    return `<div class='container'><h1>Your Color Schemes</h1>${this.response.index_partial}</div>`
+  }
+
+  randomColorScheme() {
+    return `<div class='container'>${this.response.random_partial}</div>`
+  }
+}
+
 $(function() {
   attachListeners()
 })
@@ -24,8 +38,10 @@ function loadColorSchemes(clickData) {
     url: clickData.href,
     dataType: 'json',
     success: function(resp) {
-      let partial = resp.index_partial
-        $('#content').html(`<div class='container'><h1>Your Color Schemes</h1>${partial}</div>`)
+      let response = new Response(resp)
+      $('#content').html(response.yourColorSchemes())
+      // let partial = resp.index_partial
+        // $('#content').html(`<div class='container'><h1>Your Color Schemes</h1>${partial}</div>`)
       }
   })
 }
@@ -35,14 +51,13 @@ function loadRandomColorScheme(clickData) {
     url: clickData.href,
     dataType: 'json',
     success: function(resp) {
-      let partial = resp.random_partial
-        $('#content').html(`<div class='container'>${partial}</div>`)
+      let response = new Response(resp)
+      $('#content').html(response.randomColorScheme())
       }
   })
 }
 
 function createColorScheme() {
-
   const colorScheme = $("form#new_color_scheme").serialize()
 
   $.ajax({
@@ -51,9 +66,8 @@ function createColorScheme() {
     data: colorScheme,
     dataType: 'json',
     success: function(resp) {
-      let partial = resp.index_partial
-        $('#content').html(`<div class='container'><h1>Your Color Schemes</h1>${partial}</div>`)
+      let response = new Response(resp)
+      $('#content').html(response.yourColorSchemes())
       }
     })
-
 }
