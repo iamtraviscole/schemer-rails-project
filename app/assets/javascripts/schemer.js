@@ -68,6 +68,7 @@ function createColorScheme() {
     success: function(resp) {
       let response = new Response(resp)
       $('#content').html(response.yourColorSchemes())
+      $(".alertcontainer").html(`<div class='alert alert-success'>New color scheme created!</div>`)
       }
     })
 }
