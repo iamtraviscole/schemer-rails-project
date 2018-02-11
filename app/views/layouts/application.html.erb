@@ -57,12 +57,19 @@
 
     <script id="color-scheme-template" type="text/x-handlebars-template">
       <div class="container">
-        {{#if colorSchemes}}
-          {{#each colorSchemes}}
+        {{#if user.color_schemes}}
+          {{#each user.color_schemes}}
             <div class="colors-container">
               <h3 class="u-pull-left">{{name}}</h3>
                 <p class="u-pull-right"><span class="fa fa-trash-o" aria-hidden="true"></span> <a data-method="delete" href="/users/{{user_id}}/color_schemes/{{id}}">Delete</a></p>
                 <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><a href="/users/{{user_id}}/color_schemes/{{id}}/edit">Edit</a></p>
+                <p class="u-pull-right">
+                {{#if favorite}}
+                  <span class="fa fa-star star-icon"></span><a data-method="put" href="/users/{{../currentUserId}}/favorites/{{id}}?type=unfavorite">Unfavorite</a>
+                {{else}}
+                  <span class="fa fa-star-o star-icon"></span><a data-method="put" href="/users/{{../currentUserId}}/favorites/{{id}}?type=favorite">Favorite</a>
+                {{/if}}
+                </p>
                 <div class="row">
                   <div class="twelve columns">
                     {{#each colors}}
@@ -85,7 +92,7 @@
             </div>
           {{else}}
             <p> No color schemes yet! </p>
-            <span class="fa fa-plus" aria-hidden="true"></span> <a href="/users/{{current_user_id}}/color_schemes/new">Create One!</a>
+            <span class="fa fa-plus" aria-hidden="true"></span> <a href="/users/{{currentUserId}}/color_schemes/new">Create One!</a>
           {{/each}}
         {{/if}}
       </div>

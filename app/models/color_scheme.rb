@@ -7,18 +7,22 @@ class ColorScheme < ApplicationRecord
   validates :name, presence: :true
   accepts_nested_attributes_for :color_scheme_colors
 
-  def self.schemes_json(color_schemes)
-    color_schemes_json = []
-    color_schemes.each_with_index do |cs, i|
-      color_schemes_json <<
+  def self.user_schemes_json(user)
+    user_color_schemes_json = {
+      id: user.id,
+      color_schemes: [],
+      }
+    user.color_schemes.each_with_index do |cs, i|
+      user_color_schemes_json[:color_schemes] <<
         {
           id: "#{cs.id}",
           name: "#{cs.name}",
           user_id: "#{cs.user_id}",
+          favorite: user.favorites.include?(cs),
           colors: []
         }
       cs.colors.each do |c|
-        color_schemes_json[i][:colors] <<
+        user_color_schemes_json[:color_schemes][i][:colors] <<
         {
           id: "#{c.id}",
           hex_code: "#{c.hex_code}",
@@ -26,7 +30,7 @@ class ColorScheme < ApplicationRecord
         }
       end
     end
-    color_schemes_json
+    user_color_schemes_json
   end
 
 end
