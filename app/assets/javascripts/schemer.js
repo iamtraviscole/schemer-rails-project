@@ -38,11 +38,20 @@ function loadColorSchemes(clickData) {
     url: clickData.href,
     dataType: 'json',
     success: function(resp) {
-      let response = new Response(resp)
-      $('#content').html(response.yourColorSchemes())
-      // let partial = resp.index_partial
-        // $('#content').html(`<div class='container'><h1>Your Color Schemes</h1>${partial}</div>`)
+      console.log(resp)
+      // let response = new Response(resp)
+      // $('#content').html(response.yourColorSchemes())
+      // --
+      let source = $('#color-scheme-template').html()
+      let template = Handlebars.compile(source)
+      let context = {
+        currentUserId: $('#current-user-data')[0].dataset.currentUserId,
+        colorSchemes: resp,
       }
+      console.log(context)
+      let html = template(context)
+      $('#content').html(html)
+    }
   })
 }
 

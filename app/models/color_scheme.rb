@@ -6,4 +6,27 @@ class ColorScheme < ApplicationRecord
   has_many :colors, through: :color_scheme_colors
   validates :name, presence: :true
   accepts_nested_attributes_for :color_scheme_colors
+
+  def self.schemes_json(color_schemes)
+    color_schemes_json = []
+    color_schemes.each_with_index do |cs, i|
+      color_schemes_json <<
+        {
+          id: "#{cs.id}",
+          name: "#{cs.name}",
+          user_id: "#{cs.user_id}",
+          colors: []
+        }
+      cs.colors.each do |c|
+        color_schemes_json[i][:colors] <<
+        {
+          id: "#{c.id}",
+          hex_code: "#{c.hex_code}",
+          color_note: "#{c.color_scheme_colors.first.color_note}"
+        }
+      end
+    end
+    color_schemes_json
+  end
+
 end

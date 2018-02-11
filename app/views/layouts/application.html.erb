@@ -56,7 +56,39 @@
     </div>
 
     <script id="color-scheme-template" type="text/x-handlebars-template">
-
+      <div class="container">
+        {{#if colorSchemes}}
+          {{#each colorSchemes}}
+            <div class="colors-container">
+              <h3 class="u-pull-left">{{name}}</h3>
+                <p class="u-pull-right"><span class="fa fa-trash-o" aria-hidden="true"></span> <a data-method="delete" href="/users/{{user_id}}/color_schemes/{{id}}">Delete</a></p>
+                <p class="u-pull-right"><span class="fa fa-pencil-square-o icon"></span><a href="/users/{{user_id}}/color_schemes/{{id}}/edit">Edit</a></p>
+                <div class="row">
+                  <div class="twelve columns">
+                    {{#each colors}}
+                          {{#if color_note}}
+                            <div class="colors-index-20p-container tooltip">
+                              <div class="colors-index-color" style="background-color: {{hex_code}}"></div>
+                              <span class="fa fa-square-o color-note-indicator" aria-hidden="true"></span>
+                              <div class="colors-note-tooltiptext">
+                                {{color_note}}
+                              </div>
+                            </div>
+                          {{else}}
+                            <div class="colors-index-20p-container">
+                              <div class="colors-index-color" style="background-color: {{hex_code}}"></div>
+                            </div>
+                          {{/if}}
+                    {{/each}}
+                </div>
+              </div>
+            </div>
+          {{else}}
+            <p> No color schemes yet! </p>
+            <span class="fa fa-plus" aria-hidden="true"></span> <a href="/users/{{current_user_id}}/color_schemes/new">Create One!</a>
+          {{/each}}
+        {{/if}}
+      </div>
     </script>
 
   </body>

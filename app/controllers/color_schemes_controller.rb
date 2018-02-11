@@ -7,11 +7,9 @@ class ColorSchemesController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
       @color_schemes = @user.color_schemes
-      partial = render_to_string partial: 'color_schemes/index', locals: { user: @user, color_schemes: @color_schemes }
       respond_to do |format|
         format.html { render :index }
-        format.json { render json: {index_partial: partial} }
-        # format.js { render json: @color_schemes.to_json(include: [:user, :colors, :color_scheme_colors]) }
+        format.json { render json: ColorScheme.schemes_json(@color_schemes) }
       end
     else
       @color_schemes = ColorScheme.all
