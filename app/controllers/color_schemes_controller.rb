@@ -34,7 +34,7 @@ class ColorSchemesController < ApplicationController
       flash[:success] = "New color scheme created!"
       respond_to do |format|
         format.html { redirect_to user_color_schemes_path }
-        format.json { redirect_to user_color_schemes_path, turbolinks: false }
+        format.json { render json: ColorScheme.user_schemes_json(current_user) }
       end
     else
       flash[:error] = @color_scheme.errors.full_messages.to_sentence

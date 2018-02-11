@@ -3,10 +3,6 @@ class Response {
     this.response = response
   }
 
-  yourColorSchemes() {
-    return `<div class='container'><h1>Your Color Schemes</h1>${this.response.index_partial}</div>`
-  }
-
   randomColorScheme() {
     return `<div class='container'>${this.response.random_partial}</div>`
   }
@@ -38,14 +34,7 @@ function loadColorSchemes(clickData) {
     url: clickData.href,
     dataType: 'json',
     success: function(resp) {
-      let source = $('#color-scheme-template').html()
-      let template = Handlebars.compile(source)
-      let context = {
-        currentUserId: $('#current-user-data')[0].dataset.currentUserId,
-        user: resp
-      }
-      let html = template(context)
-      $('#content').html(html)
+      handlebarsTemplate(resp)
     }
   })
 }
@@ -70,9 +59,18 @@ function createColorScheme() {
     data: colorScheme,
     dataType: 'json',
     success: function(resp) {
-      let response = new Response(resp)
-      $('#content').html(response.yourColorSchemes())
-      $(".alertcontainer").html(`<div class='alert alert-success'>New color scheme created!</div>`)
-      }
-    })
+      handlebarsTemplate(resp)
+    }
+  })
+}
+
+function handlebarsTemplate(resp) {
+    let source = $('#color-scheme-template').html()
+    let template = Handlebars.compile(source)
+    let context = {
+      currentUserId: $('#current-user-data')[0].dataset.currentUserId,
+      user: resp
+    }
+    let html = template(context)
+    $('#content').html(html)
 }
