@@ -27,13 +27,21 @@ function attachListeners(){
     event.preventDefault()
     createColorScheme()
   })
+
+  $(document).on('click', '#filter', function(event) {
+    sortRespByCsName(respToSort)
+  })
 }
+
+let respToSort
 
 function loadColorSchemes(clickData) {
   $.ajax({
     url: clickData.href,
     dataType: 'json',
     success: function(resp) {
+      console.log(resp)
+      respToSort = resp
       handlebarsTemplate(resp)
     }
   })
@@ -73,4 +81,13 @@ function handlebarsTemplate(resp) {
     }
     let html = template(context)
     $('#content').html(html)
+}
+
+function sortRespByCsName(resp) {
+  let sorted = resp.color_schemes.sort((a, b) => a.name.localeCompare(b.name))
+  let sortedObject = {
+    id: resp.id,
+    color_schemes: sorted
+  }
+  handlebarsTemplate(sortedObject)
 }
